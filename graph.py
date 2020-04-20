@@ -1,5 +1,5 @@
 # IMPORTANT:
-# run with:  gunicorn graph:server -b :8000
+# run with:  gunicorn graph:server --reload -b :8000
 
 import dash
 from dash.dependencies import Input, Output
@@ -20,6 +20,8 @@ server.secret_key = os.environ.get('secret_key', 'secret')
 app.scripts.config.serve_locally = False
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-latest.min.js'
 
+
+app.title = "Plot.ly Dash app running in gunicorn"
 app.layout = html.Div([
     html.H1('Stock Tickers'),
     dcc.Dropdown(
@@ -61,13 +63,3 @@ if __name__ == '__main__':
     app.run_server()
 
 
-
-
-
-# hello = Flask(__name__)
-# @hello.route("/")
-# def greeting():
-#     return "<h1 style='color:green'>Hello World!</h1>"
-
-# if __name__ == "__main__":
-#     hello.run(host='0.0.0.0')

@@ -1,3 +1,5 @@
+SAVE THIS PROJECT - THIS ALL SEEMS TO WORK
+
 Experimenting with Flask and Gunicorn on Docker
 With the intention of creating an example Plotly Dash app on Gunicorn and Docker.
 
@@ -10,10 +12,9 @@ https://github.com/nethacker/ubuntu-flask-gunicorn-docker
 Blog:
 https://philchen.com/2019/07/09/a-scalable-flask-application-using-gunicorn-on-ubuntu-18-04-in-docker
 
-
 Docker build with:
-docker build -t nethacker/ubuntu-flask-gunicorn-docker:latest .
+docker build -t swearingen/ubuntu-flask-gunicorn-docker:latest .
 
 Docker run with:
-docker run --shm-size=256m --detach -p 8080:8080 nethacker/ubuntu-flask-gunicorn-docker:latest
+docker run --shm-size=256m --detach -p 8080:8080 swearingen/ubuntu-flask-gunicorn-docker:latest
 

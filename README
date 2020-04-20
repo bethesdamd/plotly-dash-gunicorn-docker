@@ -1,0 +1,14 @@
+Experimenting with Flask and Gunicorn on Docker
+With the intention of creating an example Plotly Dash app on Gunicorn and Docker.
+
+*Copied* (not cloned) from:
+https://github.com/nethacker/ubuntu-flask-gunicorn-docker.git and then modified
+
+His README:
+https://github.com/nethacker/ubuntu-flask-gunicorn-docker
+
+Blog:
+https://philchen.com/2019/07/09/a-scalable-flask-application-using-gunicorn-on-ubuntu-18-04-in-docker
+
+
+

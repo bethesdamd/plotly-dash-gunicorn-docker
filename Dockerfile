@@ -9,7 +9,7 @@ COPY requirements.txt /root/
 RUN pip install -r /root/requirements.txt && useradd -m ubuntu
 ENV HOME=/home/ubuntu
 USER ubuntu
-COPY app01.py wsgi.py gunicorn_config.py /home/ubuntu/
+COPY graph.py wsgi.py gunicorn_config.py /home/ubuntu/
 WORKDIR /home/ubuntu/
 EXPOSE 8080
-CMD ["gunicorn", "-c", "gunicorn_config.py", "wsgi:hello"]
+CMD ["gunicorn", "-c", "gunicorn_config.py", "graph:server"]

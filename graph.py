@@ -13,6 +13,7 @@ from flask import Flask
 from flask_restful import Resource, Api
 import pandas as pd
 import os
+import json
 
 # TODO: in a real production app, i would ideally want to load this data
 # from either the local server or AWS S3
@@ -25,7 +26,8 @@ api = Api(server)
 
 class HelloWorld(Resource):
     def get(self):
-        return {'hello': 'world'}
+        test_records = [{"id": 1, "name": "david"}, {"id": 2, "name": "Will"}]
+        return test_records
 
 api.add_resource(HelloWorld, '/hello')
 

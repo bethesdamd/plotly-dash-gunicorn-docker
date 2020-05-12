@@ -3,17 +3,19 @@
 # MAY HAVE TO RUN THE FOLLOWING FIRST IN THE PROJECT DIRECTORY TO SET THE PYTHON ENVIRONMENT:
 #   source env/bin/activate
 # run locally with:  gunicorn graph:server --reload -b :8000
+# TODO: how to properly run debug mode? is "development" same as debug mode?
 
 import dash
 from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 
-from flask import Flask
-from flask_restful import Resource, Api
+from flask import Flask, jsonify, request
+from flask_restful import Resource, Api, reqparse
 import pandas as pd
 import os
 import json
+from nltk import FreqDist
 
 # TODO: in a real production app, i would ideally want to load this data
 # from either the local server or AWS S3
@@ -28,6 +30,14 @@ class HelloWorld(Resource):
     def get(self):
         test_records = [{"id": 1, "name": "david"}, {"id": 2, "name": "Will"}]
         return test_records
+
+    def post(self):
+        json_data = request.get_json(force=True)
+        # Do a NLP operation on the payload (Frequency distribution of words)
+        payload = json_data['payload']
+        parsed = FreqDist(payload.split())
+        print(f'payload: {payload}, parsed: {parsed.most_common()}')
+        return {"foo":"bar"}
 
 api.add_resource(HelloWorld, '/hello')
 
@@ -78,6 +88,6 @@ def update_graph(selected_dropdown_value):
 
 # TODO: do i need this? there's a line like this in wsgi.py also, not sure which is needed
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug=True)
 
 

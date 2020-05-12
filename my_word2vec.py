@@ -7,12 +7,9 @@ warnings.filterwarnings(action = 'ignore')
 import gensim 
 from gensim.models import Word2Vec 
 
-# sample = open("C:\\Users\\Admin\\Desktop\\alice.txt", "r") 
-# s = sample.read() 
-
-def myw2v(s):  
-    # Replaces escape character with space 
-    f = s.replace("\n", " ") 
+# sg = Use SkipGram model versus default CBOW 
+def myw2v(txt, source_word, target_word, sg=0):   
+    f = txt.replace("\n", " ") 
     data = [] 
 
     # iterate through each sentence in the file 
@@ -22,29 +19,10 @@ def myw2v(s):
         for j in word_tokenize(i): 
             temp.append(j.lower()) 
     
-        data.append(temp) 
+        data.append(temp)
     
-    # Create CBOW model 
-    model1 = gensim.models.Word2Vec(data, min_count = 1, size = 100, window = 5) 
-    
-    # Print results 
-    print("Cosine similarity between 'alice' " + 
-                "and 'wonderland' - CBOW : ", 
-        model1.similarity('alice', 'wonderland')) 
+    model = gensim.models.Word2Vec(data, min_count = 1, size = 100, window = 5, sg = sg) 
+    return model.similarity(source_word, target_word) 
         
-    print("Cosine similarity between 'alice' " +
-                    "and 'machines' - CBOW : ", 
-        model1.similarity('alice', 'machines')) 
     
-    # Create Skip Gram model 
-    model2 = gensim.models.Word2Vec(data, min_count = 1, size = 100, 
-                                                window = 5, sg = 1) 
     
-    # Print results 
-    print("Cosine similarity between 'alice' " +
-            "and 'wonderland' - Skip Gram : ", 
-        model2.similarity('alice', 'wonderland')) 
-        
-    print("Cosine similarity between 'alice' " +
-                "and 'machines' - Skip Gram : ", 
-        model2.similarity('alice', 'machines')) 

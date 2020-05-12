@@ -1,7 +1,7 @@
-SAVE THIS PROJECT - THIS ALL SEEMS TO WORK
+SAVE THIS PROJECT - THIS ALL WORKS
 
 Experimenting with Flask and Gunicorn on Docker
-With the intention of creating an example Plotly Dash app on Gunicorn and Docker.
+creating an example Plotly Dash app which also shows REST endpoints.
 
 *Copied* (not cloned) from:
 https://github.com/nethacker/ubuntu-flask-gunicorn-docker.git and then modified

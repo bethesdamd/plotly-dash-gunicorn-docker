@@ -35,16 +35,18 @@ class HelloWorld(Resource):
         test_records = [{"id": 1, "name": "david"}, {"id": 2, "name": "Will"}]
         return test_records
 
+class NLP(Resource):
     def post(self):
         json_data = request.get_json(force=True)
         # Do a NLP operation on the payload (Frequency distribution of words)
         # In Postman, do a POST with "raw" and JSON (application/json) and make the 
         # payload like this: { "id": 1, "payload": "Here is some text to process."}
         payload = json_data['payload']
-        print(my_nlp.distfreq(payload))
-        return {"foo":"bar"}
+        # return {"foo":"bar"}
+        return my_nlp.distfreq(payload)
 
 api.add_resource(HelloWorld, '/hello')
+api.add_resource(NLP, '/nlpdistfreq')
 
 # Shows how to get secrets
 server.secret_key = os.environ.get('secret_key', 'secret')

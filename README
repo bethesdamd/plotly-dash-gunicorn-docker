@@ -23,3 +23,13 @@ docker build -t swearingen/ubuntu-flask-gunicorn-docker:latest .
 Docker run with:
 docker run --shm-size=512m --detach -p 8080:8080 swearingen/ubuntu-flask-gunicorn-docker:latest
 
+IMPORTANT NOTES FOR LOCAL DEVELOPMENT MODE (NO DOCKER):
+
+mkdir gunicorn-worker-tmp-dir
+
+Start up with a local gunicorn config file, that specifies a couple of things differently:
+- different local user name
+- different gunicorn temp directory location
+  
+  gunicorn -c local_gunicorn_config.py --worker-tmp-dir ./gunicorn-worker-tmp-dir  graph:server
+

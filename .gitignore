@@ -1,5 +1,6 @@
 *.pyc
 venv/
+gunicorn-worker-tmp-dir/
 .idea/
 .vscode/
 __pycache__

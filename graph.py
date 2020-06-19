@@ -33,6 +33,7 @@ api = Api(server)
 class HelloWorld(Resource):
     def get(self):
         test_records = [{"id": 1, "name": "david"}, {"id": 2, "name": "Will"}]
+        print("xxxx")
         return test_records
 
 class NLP(Resource):

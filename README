@@ -16,5 +16,5 @@ Docker build with:
 docker build -t swearingen/ubuntu-flask-gunicorn-docker:latest .
 
 Docker run with:
-docker run --shm-size=256m --detach -p 8080:8080 swearingen/ubuntu-flask-gunicorn-docker:latest
+docker run --shm-size=512m --detach -p 8080:8080 swearingen/ubuntu-flask-gunicorn-docker:latest
 

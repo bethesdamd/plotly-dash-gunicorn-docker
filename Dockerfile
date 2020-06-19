@@ -6,6 +6,7 @@
 
 FROM nethacker/ubuntu-18-04-python-3:python-3.7.3
 COPY requirements.txt /root/
+RUN pip install --upgrade pip
 RUN pip install -r /root/requirements.txt && useradd -m ubuntu
 ENV HOME=/home/ubuntu
 USER ubuntu

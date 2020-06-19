@@ -14,12 +14,15 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from flask import Flask, jsonify, request
+from flask import render_template
 from flask_restful import Resource, Api, reqparse
 import pandas as pd
 import os
 import json
 from nltk import FreqDist
 import my_nlp
+
+import jinja2
 
 # TODO: in a real production app, i would ideally want to load this data
 # from either the local server or AWS S3
@@ -33,10 +36,16 @@ api = Api(server)
 class HelloWorld(Resource):
     def get(self):
         test_records = [{"id": 1, "name": "david"}, {"id": 2, "name": "Will"}]
-        print("xxxx")
         return test_records
 
+class Home(Resource):
+    def get(self):
+        # TODO: not working, possibly something to do with the fact that this is a Dash app
+        # probably should separate the Dash app from the REST API functionality
+        return render_template('home.txt', name='david')
+
 class NLP(Resource):
+    # NOTE WHEN TESTING THIS, THIS IS A **POST**, USE POSTMAN OR A curl POST
     def post(self):
         json_data = request.get_json(force=True)
         # Do a NLP operation on the payload (Frequency distribution of words)
@@ -47,6 +56,7 @@ class NLP(Resource):
         return my_nlp.distfreq(payload)
 
 api.add_resource(HelloWorld, '/hello')
+api.add_resource(Home, '/home')
 api.add_resource(NLP, '/nlpdistfreq')
 
 # Shows how to get secrets
@@ -96,6 +106,6 @@ def update_graph(selected_dropdown_value):
 
 # TODO: do i need this? there's a line like this in wsgi.py also, not sure which is needed
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
 
 

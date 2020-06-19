@@ -1,5 +1,12 @@
 SAVE THIS PROJECT - THIS ALL SEEMS TO WORK, AND WAS A BIT DIFFICULT TO FIGURE OUT:
 
+TODO: 
+- search for any TODO's in the files
+- I can't get render_template to work.  I think this has something to do with directives related to Plotly?
+I think I'm calling it properly.
+- 
+
+
 This is a setup for building a Plot.ly Dash (data science on Flask) app with:
 - Gunicorn - a real web server
 - Docker - allows easy deployment
@@ -31,5 +38,5 @@ Start up with a local gunicorn config file, that specifies a couple of things di
 - different local user name
 - different gunicorn temp directory location
   
-  gunicorn -c local_gunicorn_config.py --worker-tmp-dir ./gunicorn-worker-tmp-dir  graph:server
+  gunicorn --reload -c local_gunicorn_config.py --worker-tmp-dir ./gunicorn-worker-tmp-dir  graph:server
 

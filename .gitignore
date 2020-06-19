@@ -4,3 +4,4 @@ gunicorn-worker-tmp-dir/
 .idea/
 .vscode/
 __pycache__
+vs_code.code-workspace

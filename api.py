@@ -1,4 +1,6 @@
-# Very basic RESTful API in Flask
+# Very basic RESTful API in Flask, which does not use flask_restful library
+# TODO: what's the better approach, use or not use flask_restful?  Probably the latter, see this:
+# https://hub.packtpub.com/which-python-framework-is-best-for-building-restful-apis-django-or-flask/
 # Run with:  python api.py
 
 import flask
@@ -30,7 +32,6 @@ books = [
 def home():
     return '''<h1>Distant Reading Archive</h1>
 <p>A prototype API for distant reading of science fiction novels.</p>'''
-
 
 # A route to return all of the available entries in our catalog.
 @app.route('/api/v1/resources/books/all', methods=['GET'])

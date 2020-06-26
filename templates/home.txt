@@ -4,6 +4,6 @@
     <meta charset="UTF-8">
     <title>template example</title>
 </head>
-<body>hello {{ name }}
+<body><ul><li>hello {{ name }}</li></ul>
 </body>
 </html>

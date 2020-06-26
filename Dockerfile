@@ -11,7 +11,8 @@ RUN pip install -r /root/requirements.txt
 RUN useradd -m ubuntu
 ENV HOME=/home/ubuntu
 USER ubuntu
-COPY graph.py wsgi.py gunicorn_config.py /home/ubuntu/
+COPY *.py /home/ubuntu/
+# COPY graph.py wsgi.py gunicorn_config.py /home/ubuntu/
 WORKDIR /home/ubuntu/
 EXPOSE 8080
 CMD ["gunicorn", "-c", "gunicorn_config.py", "graph:server"]
